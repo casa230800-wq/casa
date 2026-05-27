@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schedule</title>
+<style>
+  :root{--bg:#f6f2ea;--paper:#fffdf8;--ink:#1d2430;--muted:#747d8a;--line:#ded7cb;--head:#e8ecf3;--stripe:#f8f4ec;--accent:#1f2f4a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,"Malgun Gothic",sans-serif}
+  .page{max-width:980px;margin:22px auto;padding:0 14px}
+  .sheet{background:var(--paper);border:1px solid var(--line);box-shadow:0 10px 26px rgba(45,38,28,.08)}
+  header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;padding:26px 28px 18px;border-bottom:1px solid var(--line)}
+  .date{font-size:30px;font-weight:900;letter-spacing:0}
+  .weekday{margin-top:4px;color:var(--accent);font-size:14px;font-weight:900}
+  h1{margin:0;color:#2c3340;font-size:24px;font-weight:900;letter-spacing:0}
+  main{padding:20px 24px 24px}
+  section+section{margin-top:24px}
+  .section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  h2{margin:0;font-size:18px;font-weight:900}
+  .count{color:var(--muted);font-size:13px;font-weight:800}
+  table{width:100%;border-collapse:collapse;background:#fff;border-top:2px solid var(--accent)}
+  th,td{padding:13px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:14px;vertical-align:middle}
+  th{background:var(--head);font-size:13px;color:#313946}
+  tbody tr:nth-child(even){background:var(--stripe)}
+  td:first-child{width:54px;color:var(--muted);font-weight:800}
+  td:nth-child(2),td:nth-child(3){font-weight:900}
+  .time{font-weight:900;white-space:nowrap}
+  .night{display:inline-block;margin-left:6px;padding:2px 6px;border-radius:4px;background:#fff0d2;color:#805800;font-size:12px;font-weight:900}
+  .empty{padding:26px;text-align:center;color:var(--muted);background:#fff;border:1px dashed var(--line)}
+  @media(max-width:720px){
+    .page{margin:8px auto;padding:0 8px}.sheet{box-shadow:none}header{display:block;padding:22px 18px 16px}.date{font-size:27px}h1{margin-top:10px;font-size:22px}main{padding:14px 10px}
+    table{border-top:2px solid var(--accent)}thead{display:none}tbody{display:grid;gap:8px}tr{display:grid;grid-template-columns:42px 1fr;border:1px solid var(--line);background:#fff!important;padding:8px}td{border:0;padding:5px 4px}td:first-child{grid-row:span 4}td::before{display:block;color:var(--muted);font-size:12px;font-weight:800}td:nth-child(2)::before{content:"고객 ID"}td:nth-child(3)::before{content:"플레이어"}td:nth-child(4)::before{content:"시간"}td:nth-child(5)::before{content:"사냥터"}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="sheet">
+    <header>
+      <div>
+        <div class="date">2026.05.27</div>
+        <div class="weekday">WEDNESDAY</div>
+      </div>
+      <h1>SCHEDULE</h1>
+    </header>
+    <main>
+      <section>
+        <div class="section-head"><h2>오늘 스케줄</h2></div>
+        <table>
+          <thead><tr><th>NO</th><th>고객 ID</th><th>플레이어</th><th>시간</th><th>사냥터</th></tr></thead>
+          <tbody>
+            <tr><td>01</td><td>한늑대</td><td>ben</td><td class="time">11:00 ~ 23:00</td><td>PC 타락, 용던3F</td></tr>
+            <tr><td>02</td><td>비운</td><td>raymark</td><td class="time">22:00 ~ 익일 10:00 <span class="night">야간</span></td><td>글루디오던전 4,5F</td></tr>
+            <tr><td>03</td><td>미니</td><td>Nogs</td><td class="time">23:00 ~ 익일 11:00 <span class="night">야간</span></td><td>글루디오던전 5,6F</td></tr>
+            <tr><td>04</td><td>한늑대</td><td>crit</td><td class="time">23:00 ~ 익일 11:00 <span class="night">야간</span></td><td>PC 타락, 용던3F</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <div class="section-head"><h2>내일 스케줄</h2></div>
+        <table>
+          <thead><tr><th>NO</th><th>고객 ID</th><th>플레이어</th><th>시간</th><th>사냥터</th></tr></thead>
+          <tbody>
+            <tr><td>01</td><td>한늑대</td><td>ben</td><td class="time">11:00 ~ 23:00</td><td>PC 타락, 용던3F</td></tr>
+            <tr><td>02</td><td>미니</td><td>Lester</td><td class="time">23:00 ~ 익일 11:00 <span class="night">야간</span></td><td>글루디오던전 5,6F</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</div>
+</body>
+</html>
