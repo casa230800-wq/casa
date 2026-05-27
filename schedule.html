@@ -38,37 +38,52 @@
 <div class="page">
   <div class="sheet">
     <header>
-      <div>
-        <div class="date">2026.05.27</div>
-        <div class="weekday">WEDNESDAY</div>
-      </div>
+      <div><div class="date" id="dateText"></div><div class="weekday" id="weekdayText"></div></div>
       <h1>SCHEDULE</h1>
     </header>
     <main>
       <section>
         <div class="section-head"><h2>오늘 스케줄</h2></div>
-        <table>
-          <thead><tr><th>NO</th><th>고객 ID</th><th>플레이어</th><th>시간</th><th>사냥터</th></tr></thead>
-          <tbody>
-            <tr><td>01</td><td>한늑대</td><td>ben</td><td class="time">11:00 ~ 23:00</td><td>PC 타락, 용던3F</td></tr>
-            <tr><td>02</td><td>비운</td><td>raymark</td><td class="time">22:00 ~ 익일 10:00 <span class="night">야간</span></td><td>글루디오던전 4,5F</td></tr>
-            <tr><td>03</td><td>미니</td><td>Nogs</td><td class="time">23:00 ~ 익일 11:00 <span class="night">야간</span></td><td>글루디오던전 5,6F</td></tr>
-            <tr><td>04</td><td>한늑대</td><td>crit</td><td class="time">23:00 ~ 익일 11:00 <span class="night">야간</span></td><td>PC 타락, 용던3F</td></tr>
-          </tbody>
-        </table>
+        <div id="todayTable"></div>
       </section>
       <section>
         <div class="section-head"><h2>내일 스케줄</h2></div>
-        <table>
-          <thead><tr><th>NO</th><th>고객 ID</th><th>플레이어</th><th>시간</th><th>사냥터</th></tr></thead>
-          <tbody>
-            <tr><td>01</td><td>한늑대</td><td>ben</td><td class="time">11:00 ~ 23:00</td><td>PC 타락, 용던3F</td></tr>
-            <tr><td>02</td><td>미니</td><td>Lester</td><td class="time">23:00 ~ 익일 11:00 <span class="night">야간</span></td><td>글루디오던전 5,6F</td></tr>
-          </tbody>
-        </table>
+        <div id="tomorrowTable"></div>
       </section>
     </main>
   </div>
 </div>
+<script>
+const PUBLIC_DATA = {"generatedAt":"2026. 5. 27. 11시 2분 52초","rows":[{"id":"id_k6kndh7mp9stlxl","date":"2026-05-18","customer":"세인트","player":"snapi","startTime":"03:00","endTime":"15:00","endDate":"2026-05-18","huntingGround":"용의던전 3F"},{"id":"id_iiuorfpmp9stlxl","date":"2026-05-18","customer":"장땡","player":"Nas","startTime":"03:00","endTime":"15:00","endDate":"2026-05-18","huntingGround":"글루디오던전 6,7F"},{"id":"id_dqes98umpbdyxc3","date":"2026-05-18","customer":"꾸기","player":"sLar","startTime":"11:00","endTime":"23:00","endDate":"2026-05-18","huntingGround":"확인 필요"},{"id":"id_iqlk3v2mpb0wweh","date":"2026-05-18","customer":"미니","player":"TJ","startTime":"11:00","endTime":"23:00","endDate":"2026-05-18","huntingGround":"글루디오던전 5,6F"},{"id":"id_d75i27fmp9stlxl","date":"2026-05-18","customer":"한늑대","player":"ben","startTime":"11:00","endTime":"23:00","endDate":"2026-05-18","huntingGround":"PC 타락, 용던3F"},{"id":"id_z54yb8tmp9stlxl","date":"2026-05-18","customer":"비운","player":"raymark","startTime":"22:00","endTime":"10:00","endDate":"2026-05-19","huntingGround":"글루디오던전 C 4,5F"},{"id":"id_siyavq8mp9stlxl","date":"2026-05-18","customer":"미니","player":"Lester","startTime":"23:00","endTime":"11:00","endDate":"2026-05-19","huntingGround":"글루디오던전 5,6F"},{"id":"id_w00jp48mp9stlxl","date":"2026-05-18","customer":"한늑대","player":"crit","startTime":"23:00","endTime":"11:00","endDate":"2026-05-19","huntingGround":"PC 타락, 용던3F"},{"id":"id_mjtj38hmpa90qqn","date":"2026-05-19","customer":"세인트","player":"snapi","startTime":"03:00","endTime":"15:00","endDate":"2026-05-19","huntingGround":"용의던전 3F"},{"id":"id_btxlvb5mpa90qqn","date":"2026-05-19","customer":"장땡","player":"Nas","startTime":"03:00","endTime":"15:00","endDate":"2026-05-19","huntingGround":"글루디오던전 6,7F"},{"id":"id_4ee7ejlmpa90qqn","date":"2026-05-19","customer":"한늑대","player":"ben","startTime":"11:00","endTime":"23:00","endDate":"2026-05-19","huntingGround":"용던3F"},{"id":"id_qjj0b5hmpdtjs05","date":"2026-05-20","customer":"미니","player":"Slar","startTime":"11:00","endTime":"23:00","endDate":"2026-05-20","huntingGround":"글루디오던전 5,6F"},{"id":"id_qy6y0avmpdtjs05","date":"2026-05-20","customer":"한늑대","player":"ben","startTime":"11:00","endTime":"23:00","endDate":"2026-05-20","huntingGround":"PC 타락, 용던3F"},{"id":"id_me1sbmompdtjs05","date":"2026-05-20","customer":"비운","player":"raymark","startTime":"22:00","endTime":"10:00","endDate":"2026-05-21","huntingGround":"글루디오던전 4,5F"},{"id":"id_me90ni8mpdtjs05","date":"2026-05-20","customer":"미니","player":"Lester","startTime":"23:00","endTime":"11:00","endDate":"2026-05-21","huntingGround":"글루디오던전 5,6F"},{"id":"id_ifndsqtmpdtjs05","date":"2026-05-20","customer":"한늑대","player":"crit","startTime":"23:00","endTime":"11:00","endDate":"2026-05-21","huntingGround":"PC 타락, 용던3F"},{"id":"id_unafvrtmpdtjs05","date":"2026-05-21","customer":"세인트","player":"snapi","startTime":"03:00","endTime":"15:00","endDate":"2026-05-21","huntingGround":"용던 3F"},{"id":"id_2lg83i1mpdtjs05","date":"2026-05-21","customer":"장땡","player":"Nogs","startTime":"03:00","endTime":"15:00","endDate":"2026-05-21","huntingGround":"글루디오던전 6,7F"},{"id":"id_6agr41tmpdtjs05","date":"2026-05-21","customer":"미니","player":"Slar","startTime":"11:00","endTime":"23:00","endDate":"2026-05-21","huntingGround":"글루디오던전 5,6F"},{"id":"id_gciuaz9mpdtjs05","date":"2026-05-21","customer":"한늑대","player":"ben","startTime":"11:00","endTime":"23:00","endDate":"2026-05-21","huntingGround":"PC 타락, 용던3F"},{"id":"id_2i9s4a7mpdtjs05","date":"2026-05-21","customer":"비운","player":"raymark","startTime":"22:00","endTime":"06:00","endDate":"2026-05-22","huntingGround":"글루디오던전 4,5F"},{"id":"id_du1oepxmpdtjs05","date":"2026-05-21","customer":"한늑대","player":"crit","startTime":"23:00","endTime":"09:00","endDate":"2026-05-22","huntingGround":"PC 타락, 용던3F"},{"id":"id_e689v5ampgst56q","date":"2026-05-22","customer":"이실 요정","player":"VILLIN","startTime":"05:00","endTime":"17:00","endDate":"2026-05-22","huntingGround":"확인 필요"},{"id":"id_zu8mupimpfc08hd","date":"2026-05-22","customer":"미니","player":"Slar","startTime":"11:00","endTime":"18:00","endDate":"2026-05-22","huntingGround":"글루디오던전 5,6F"},{"id":"id_zo9qk03mpfc08hd","date":"2026-05-22","customer":"한늑대","player":"ben","startTime":"11:00","endTime":"23:00","endDate":"2026-05-22","huntingGround":"PC 타락, 용던3F"},{"id":"id_vwqprz4mpfc08hd","date":"2026-05-22","customer":"비운","player":"raymark","startTime":"22:00","endTime":"10:00","endDate":"2026-05-23","huntingGround":"글루디오던전 4,5F"},{"id":"id_3o50edjmph0hrcd","date":"2026-05-22","customer":"미니","player":"Nogs","startTime":"23:00","endTime":"05:00","endDate":"2026-05-23","huntingGround":"글루디오던전 5,6F"},{"id":"id_5wn9u8gmpfc08hd","date":"2026-05-22","customer":"한늑대","player":"crit","startTime":"23:00","endTime":"11:00","endDate":"2026-05-23","huntingGround":"PC 타락, 용던3F"},{"id":"id_kytlqpkmpgz5wwv","date":"2026-05-23","customer":"이실 요정","player":"VILLIN","startTime":"05:00","endTime":"17:00","endDate":"2026-05-23","huntingGround":"타락"},{"id":"id_hvkryt0mpgz0vn6","date":"2026-05-23","customer":"한늑대","player":"ben","startTime":"11:00","endTime":"23:00","endDate":"2026-05-23","huntingGround":"PC 타락, 용던3F"},{"id":"id_vu733f9mpid3lli","date":"2026-05-23","customer":"비운","player":"raymark","startTime":"22:00","endTime":"10:00","endDate":"2026-05-24","huntingGround":"글루디오 5,6F"},{"id":"id_26nwfr2mpif8712","date":"2026-05-23","customer":"미니","player":"Nogs","startTime":"23:00","endTime":"11:00","endDate":"2026-05-24","huntingGround":"\t글루디오 5,6F"},{"id":"id_7uyu2fympibmkj1","date":"2026-05-24","customer":"이실 요정","player":"VILLIN","startTime":"05:00","endTime":"11:00","endDate":"2026-05-24","huntingGround":"타락"},{"id":"id_83clirzmpibmkj1","date":"2026-05-24","customer":"한늑대","player":"ben","startTime":"11:00","endTime":"23:00","endDate":"2026-05-24","huntingGround":"PC 타락, 용던3F"},{"id":"id_q0tkpzvmpibmkj1","date":"2026-05-24","customer":"한늑대","player":"crit","startTime":"23:00","endTime":"11:00","endDate":"2026-05-25","huntingGround":"PC 타락, 용던3F"},{"id":"id_6pleiv0mpj0v7xo","date":"2026-05-25","customer":"이실 요정","player":"VILLIN","startTime":"05:00","endTime":"17:00","endDate":"2026-05-25","huntingGround":"확인 필요"},{"id":"id_h1bjrbkmplv8vfj","date":"2026-05-25","customer":"미니","player":"karl","startTime":"11:00","endTime":"23:00","endDate":"2026-05-25","huntingGround":"글루디오던전 5,6F"},{"id":"id_0j55hudmpj0v7xo","date":"2026-05-25","customer":"한늑대","player":"ben","startTime":"11:00","endTime":"23:00","endDate":"2026-05-25","huntingGround":"PC 타락, 용던3F"},{"id":"id_khcfqh3mpj0v7xo","date":"2026-05-25","customer":"비운","player":"raymark","startTime":"22:00","endTime":"10:00","endDate":"2026-05-26","huntingGround":"글루디오던전 4,5F"},{"id":"id_bksjvtnmpj0v7xo","date":"2026-05-25","customer":"미니","player":"Nogs","startTime":"23:00","endTime":"11:00","endDate":"2026-05-26","huntingGround":"글루디오던전 5,6F"},{"id":"id_w88fnt0mplv9aw6","date":"2026-05-26","customer":"이실 요정","player":"VILLIN","startTime":"05:00","endTime":"17:00","endDate":"2026-05-26","huntingGround":"확인 필요"},{"id":"id_m2b9ek9mplvbno0","date":"2026-05-26","customer":"세계수","player":"karl","startTime":"07:00","endTime":"17:00","endDate":"2026-05-26","huntingGround":"용의계곡"},{"id":"id_kbn7sohmplvbfov","date":"2026-05-26","customer":"으르렁","player":"jampol","startTime":"07:00","endTime":"17:00","endDate":"2026-05-26","huntingGround":"용의계곡"},{"id":"id_1xynfqvmplv9aw6","date":"2026-05-26","customer":"한늑대","player":"ben","startTime":"11:00","endTime":"23:00","endDate":"2026-05-26","huntingGround":"PC 타락, 용던3F"}]};
+const pad = n => String(n).padStart(2,"0");
+const dateISO = d => d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate());
+const dayEN = ["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"];
+const addDays = (date, days) => { const [y,m,d] = date.split("-").map(Number); const x = new Date(y,m-1,d); x.setDate(x.getDate()+days); return dateISO(x); };
+const toDate = (date,time) => { const [y,m,d] = date.split("-").map(Number); const [hh,mm] = time.split(":").map(Number); return new Date(y,m-1,d,hh||0,mm||0,0,0); };
+const esc = v => String(v ?? "").replace(/[&<>"']/g, ch => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[ch]));
+const isNight = r => r.endDate !== r.date || r.endTime <= r.startTime;
+const timeText = r => isNight(r) ? r.startTime + " ~ 익일 " + r.endTime : r.startTime + " ~ " + r.endTime;
+const startDateTime = r => toDate(r.date, r.startTime);
+const sortedRows = () => PUBLIC_DATA.rows.slice().sort((a,b) => startDateTime(a) - startDateTime(b) || a.customer.localeCompare(b.customer));
+function table(rows) {
+  if (!rows.length) return '<div class="empty">표시할 스케줄이 없습니다.</div>';
+  return '<table><thead><tr><th>NO</th><th>고객 ID</th><th>플레이어</th><th>시간</th><th>사냥터</th></tr></thead><tbody>' + rows.map((r,i) => '<tr><td>'+pad(i+1)+'</td><td>'+esc(r.customer)+'</td><td>'+esc(r.player)+'</td><td class="time">'+esc(timeText(r))+(isNight(r)?'<span class="night">야간</span>':'')+'</td><td>'+esc(r.huntingGround)+'</td></tr>').join("") + '</tbody></table>';
+}
+function render() {
+  const now = new Date();
+  const today = dateISO(now);
+  const tomorrow = addDays(today, 1);
+  const rows = sortedRows();
+  const [y,m,d] = today.split("-").map(Number);
+  const dt = new Date(y,m-1,d);
+  const todayRows = rows.filter(r => r.date === today);
+  const tomorrowRows = rows.filter(r => r.date === tomorrow);
+  document.getElementById("dateText").textContent = y + "." + pad(m) + "." + pad(d);
+  document.getElementById("weekdayText").textContent = dayEN[dt.getDay()];
+  document.getElementById("todayTable").innerHTML = table(todayRows);
+  document.getElementById("tomorrowTable").innerHTML = table(tomorrowRows);
+}
+render();
+</script>
 </body>
 </html>
