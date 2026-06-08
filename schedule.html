@@ -5,46 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ClassicOps 공개 스케줄</title>
 <style>
-  body{margin:0;background:#eef2f7;color:#111827;font-family:Arial,"Malgun Gothic",sans-serif}
-  .wrap{max-width:1040px;margin:0 auto;padding:14px}
-  header{background:#111827;color:#fff;padding:22px;border-radius:8px 8px 0 0}
-  h1{margin:0;font-size:28px}
-  .meta{margin-top:8px;color:#cbd5e1;font-size:13px;line-height:1.5}
-  .tablebox{background:#f7f2ea;border:1px solid #d8dee8;border-top:0;padding:16px;overflow:auto}
-  .tablebox:last-child{border-radius:0 0 8px 8px}
-  .summary{display:flex;justify-content:space-between;gap:10px;align-items:end;margin-bottom:10px;font-size:14px;color:#64748b}
-  .summary b{color:#111827;font-size:18px}
-  table{width:100%;border-collapse:collapse;min-width:760px;background:#fff}
-  th,td{padding:11px 10px;border-bottom:1px solid #d8dee8;text-align:left;font-size:14px;vertical-align:top}
-  th{background:#dfe7da;font-size:13px}
-  tbody tr:nth-child(odd){background:#fffaf1}
-  tbody tr:nth-child(even){background:#e9f0e4}
-  .time{font-weight:900;white-space:nowrap}
-  .small{display:block;margin-top:3px;color:#64748b;font-size:12px;font-weight:700}
-  .empty{padding:34px;text-align:center;color:#64748b;background:#fff;border:1px dashed #d8dee8;border-radius:8px}
-  @media(max-width:720px){.wrap{padding:8px}h1{font-size:23px}table{min-width:0}thead{display:none}tr{display:grid;grid-template-columns:48px 1fr;border-bottom:1px solid #d8dee8;padding:8px}td{border:0;padding:5px 4px}td:first-child{grid-row:span 4;color:#64748b}td::before{display:block;color:#64748b;font-size:12px;font-weight:700}td:nth-child(2)::before{content:"고객"}td:nth-child(3)::before{content:"플레이어"}td:nth-child(4)::before{content:"시간"}td:nth-child(5)::before{content:"사냥터"}}
+body{margin:0;background:#eef2f7;color:#111827;font-family:Arial,'Malgun Gothic',sans-serif}.wrap{max-width:1040px;margin:0 auto;padding:14px}header{background:#111827;color:#fff;padding:22px;border-radius:8px 8px 0 0}h1{margin:0;font-size:28px}.meta{margin-top:8px;color:#cbd5e1;font-size:13px;line-height:1.5}.tablebox{background:#f7f2ea;border:1px solid #d8dee8;border-top:0;padding:16px;overflow:auto}.tablebox:last-child{border-radius:0 0 8px 8px}.summary{display:flex;justify-content:space-between;gap:10px;align-items:end;margin-bottom:10px;font-size:14px;color:#64748b}.summary b{color:#111827;font-size:18px}table{width:100%;border-collapse:collapse;min-width:720px;background:#fff}th,td{padding:11px 10px;border-bottom:1px solid #d8dee8;text-align:left;font-size:14px;vertical-align:top}th{background:#dfe7da;font-size:13px}tbody tr:nth-child(odd){background:#fffaf1}tbody tr:nth-child(even){background:#e9f0e4}.time{font-weight:900;white-space:nowrap}.empty{padding:34px;text-align:center;color:#64748b;background:#fff;border:1px dashed #d8dee8;border-radius:8px}@media(max-width:720px){.wrap{padding:8px}h1{font-size:23px}table{min-width:0}thead{display:none}tr{display:grid;grid-template-columns:48px 1fr;border-bottom:1px solid #d8dee8;padding:8px}td{border:0;padding:5px 4px}td:first-child{grid-row:span 4;color:#64748b}td::before{display:block;color:#64748b;font-size:12px;font-weight:700}td:nth-child(2)::before{content:'고객'}td:nth-child(3)::before{content:'플레이어'}td:nth-child(4)::before{content:'시간'}td:nth-child(5)::before{content:'사냥터'}}
 </style>
 </head>
-<body>
-<div class="wrap">
-  <header><h1>ClassicOps 공개 스케줄</h1><div class="meta">마지막 생성: <span id="generatedAt"></span><br>날짜는 시작일 기준이며, 종료 시간이 더 이르면 익일 종료로 표시됩니다.</div></header>
-  <div id="tables"></div>
-</div>
-<script>
-const PUBLIC_DATA = {"generatedAt":"2026. 6. 9. 1시 33분 17초","rows":[{"date":"2026-06-09","customer":"억까","player":"tatz","startTime":"00:00","endTime":"10:00","hours":"10h","endDate":"2026-06-09","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-09","customer":"해솔","player":"drey","startTime":"01:00","endTime":"10:00","hours":"9h","endDate":"2026-06-09","huntingGround":"글루디오던전 4,5F","status":"예정"},{"date":"2026-06-09","customer":"세인트","player":"jr","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-06-09","huntingGround":"글루디오던전 4,5F","status":"예정"}]};
-const pad = n => String(n).padStart(2,"0");
-const dateISO = d => d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate());
-const addDays = (date, days) => { const [y,m,d] = date.split("-").map(Number); const x = new Date(y,m-1,d); x.setDate(x.getDate()+days); return dateISO(x); };
-const toDate = (date,time) => { const [y,m,d] = date.split("-").map(Number); const [hh,mm] = time.split(":").map(Number); return new Date(y,m-1,d,hh||0,mm||0,0,0); };
-const esc = v => String(v ?? "").replace(/[&<>"']/g, ch => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[ch]));
-const isNight = r => r.endDate !== r.date || r.endTime <= r.startTime;
-const timeText = r => isNight(r) ? r.startTime + "~익일 " + r.endTime : r.startTime + "~" + r.endTime;
-const startDateTime = r => toDate(r.date, r.startTime);
-document.getElementById("generatedAt").textContent = PUBLIC_DATA.generatedAt;
-function sortedRows(){ return PUBLIC_DATA.rows.slice().sort((a,b) => startDateTime(a)-startDateTime(b) || a.customer.localeCompare(b.customer)); }
-function scheduleTable(title, rows){ return '<div class="tablebox"><div class="summary"><span>'+esc(title)+'</span><b>'+rows.length+'개</b></div>'+(rows.length?'<table><thead><tr><th>NO</th><th>고객 ID</th><th>플레이어</th><th>시간</th><th>사냥터</th></tr></thead><tbody>'+rows.map((r,i)=>'<tr><td>'+pad(i+1)+'</td><td><b>'+esc(r.customer)+'</b></td><td><b>'+esc(r.player)+'</b></td><td class="time">'+esc(timeText(r))+'</td><td>'+esc(r.huntingGround)+'</td></tr>').join("")+'</tbody></table>':'<div class="empty">표시할 스케줄이 없습니다.</div>')+'</div>'; }
-function render(){ const today=dateISO(new Date()); const tomorrow=addDays(today,1); const rows=sortedRows(); document.getElementById("tables").innerHTML = scheduleTable("오늘 스케줄 - "+today, rows.filter(r=>r.date===today)) + scheduleTable("내일 스케줄 - "+tomorrow, rows.filter(r=>r.date===tomorrow)); }
-render();
-</script>
-</body>
-</html>
+<body><div class="wrap"><header><h1>ClassicOps 공개 스케줄</h1><div class="meta">마지막 생성: 2026. 6. 9. 1시 35분 18초<br>날짜는 시작일 기준이며, 종료 시간이 더 이르면 익일 종료로 표시됩니다.</div></header><section class='tablebox'><div class='summary'><span>오늘 스케줄 - 2026-06-09</span><b>3개</b></div><table><thead><tr><th>NO</th><th>고객 ID</th><th>플레이어</th><th>시간</th><th>사냥터</th></tr></thead><tbody><tr><td>01</td><td><b>억까</b></td><td><b>tatz</b></td><td class='time'>00:00~10:00</td><td>에바왕국</td></tr><tr><td>02</td><td><b>해솔</b></td><td><b>drey</b></td><td class='time'>01:00~10:00</td><td>글루디오던전 4,5F</td></tr><tr><td>03</td><td><b>세인트</b></td><td><b>jr</b></td><td class='time'>03:00~15:00</td><td>글루디오던전 4,5F</td></tr></tbody></table></section><section class='tablebox'><div class='summary'><span>내일 스케줄 - 2026-06-10</span><b>0개</b></div><div class="empty">표시할 스케줄이 없습니다.</div></section></div></body></html>
