@@ -1,4 +1,4 @@
-@{value=@{value=@{value=<!doctype html>
+@{value=@{value=@{value=@{value=<!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
@@ -47,12 +47,13 @@ function sortedRows(){ return PUBLIC_DATA.rows.slice().sort((a,b) => startDateTi
 function scheduleTable(title, rows){ return '<div class="tablebox"><div class="summary"><span>'+esc(title)+'</span><b>'+rows.length+'개</b></div>'+(rows.length?'<table><thead><tr><th>NO</th><th>고객 ID</th><th>플레이어</th><th>시간</th><th>사냥터</th></tr></thead><tbody>'+rows.map((r,i)=>'<tr><td>'+pad(i+1)+'</td><td><b>'+esc(r.customer)+'</b></td><td><b>'+esc(r.player)+'</b></td><td class="time">'+esc(timeText(r))+'</td><td>'+esc(r.huntingGround)+'</td></tr>').join("")+'</tbody></table>':'<div class="empty">표시할 스케줄이 없습니다.</div>')+'</div>'; }
 function render(){ const today=dateISO(new Date()); const tomorrow=addDays(today,1); const rows=sortedRows(); document.getElementById("generatedAt").textContent = PUBLIC_DATA.generatedAt; document.getElementById("tables").innerHTML = scheduleTable("오늘 스케줄 - "+today, rows.filter(r=>r.date===today)) + scheduleTable("내일 스케줄 - "+tomorrow, rows.filter(r=>r.date===tomorrow)); }
 function extractPublicData(html){ const m = String(html || "").match(/let PUBLIC_DATA = ([\s\S]*?);\s*const pad|const PUBLIC_DATA = ([\s\S]*?);\s*const pad/); if(!m) return null; return JSON.parse(m[1] || m[2]); }
-async function refreshPublicData(){ try { const source = "https://raw.githubusercontent.com/casa230800-wq/casa/main/schedule.html"; const res = await fetch(source + "?refresh=" + Date.now(), { cache: "no-store" }); if(!res.ok) return; const next = extractPublicData(await res.text()); if(next && Array.isArray(next.rows) && next.generatedAt !== PUBLIC_DATA.generatedAt){ PUBLIC_DATA = next; render(); } } catch(_) {} }
+async function refreshPublicData(){ try { const api = "https://api.github.com/repos/casa230800-wq/casa/contents/schedule.html?ref=main&refresh=" + Date.now(); const res = await fetch(api, { cache: "no-store", headers: { "Accept": "application/vnd.github+json" } }); if(!res.ok) return; const meta = await res.json(); const binary = atob(String(meta.content || "").replace(/\s/g, "")); const bytes = Uint8Array.from(binary, ch => ch.charCodeAt(0)); const html = new TextDecoder("utf-8").decode(bytes); const next = extractPublicData(html); if(next && Array.isArray(next.rows) && next.generatedAt !== PUBLIC_DATA.generatedAt){ PUBLIC_DATA = next; render(); } } catch(_) {} }
 render();
 setTimeout(refreshPublicData, 3000);
 setInterval(refreshPublicData, 30000);
 </script>
 </body>
 </html>; PSPath=C:\Users\kij12\Downloads\ClassicOps_REMIT_28_FIX_VERIFIED_20260531\PUBLIC\schedule.html; PSParentPath=C:\Users\kij12\Downloads\ClassicOps_REMIT_28_FIX_VERIFIED_20260531\PUBLIC; PSChildName=schedule.html; PSDrive=; PSProvider=; ReadCount=1}
+; PSPath=C:\Users\kij12\Downloads\ClassicOps_REMIT_28_FIX_VERIFIED_20260531\PUBLIC\schedule.html; PSParentPath=C:\Users\kij12\Downloads\ClassicOps_REMIT_28_FIX_VERIFIED_20260531\PUBLIC; PSChildName=schedule.html; PSDrive=; PSProvider=; ReadCount=1}
 ; PSPath=C:\Users\kij12\Downloads\ClassicOps_REMIT_28_FIX_VERIFIED_20260531\PUBLIC\schedule.html; PSParentPath=C:\Users\kij12\Downloads\ClassicOps_REMIT_28_FIX_VERIFIED_20260531\PUBLIC; PSChildName=schedule.html; PSDrive=; PSProvider=; ReadCount=1}
 ; PSPath=C:\Users\kij12\Downloads\ClassicOps_REMIT_28_FIX_VERIFIED_20260531\PUBLIC\schedule.html; PSParentPath=C:\Users\kij12\Downloads\ClassicOps_REMIT_28_FIX_VERIFIED_20260531\PUBLIC; PSChildName=schedule.html; PSDrive=; PSProvider=; ReadCount=1}
