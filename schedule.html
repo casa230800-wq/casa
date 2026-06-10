@@ -31,7 +31,7 @@
   <div id="tables"></div>
 </div>
 <script>
-const PUBLIC_DATA = {"generatedAt":"2026. 6. 9. 1시 41분 23초","rows":[{"date":"2026-06-09","customer":"억까","player":"tatz","startTime":"00:00","endTime":"10:00","hours":"10h","endDate":"2026-06-09","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-09","customer":"해솔","player":"drey","startTime":"01:00","endTime":"10:00","hours":"9h","endDate":"2026-06-09","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-09","customer":"세인트","player":"jr","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-06-09","huntingGround":"용던 3","status":"예정"}]};
+const PUBLIC_DATA = {"generatedAt":"2026. 6. 10. 17시 56분 25초","rows":[{"date":"2026-06-10","customer":"억까","player":"mike","startTime":"01:00","endTime":"05:00","hours":"4h","endDate":"2026-06-10","huntingGround":"에바왕국","status":"예정"}]};
 const pad = n => String(n).padStart(2,"0");
 const dateISO = d => d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate());
 const addDays = (date, days) => { const [y,m,d] = date.split("-").map(Number); const x = new Date(y,m-1,d); x.setDate(x.getDate()+days); return dateISO(x); };
