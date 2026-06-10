@@ -1,8 +1,11 @@
-@{value=<!doctype html>
+@{value=@{value=<!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>ClassicOps 공개 스케줄</title>
 <style>
   body{margin:0;background:#eef2f7;color:#111827;font-family:Arial,"Malgun Gothic",sans-serif}
@@ -31,7 +34,7 @@
   <div id="tables"></div>
 </div>
 <script>
-const PUBLIC_DATA = {"generatedAt":"2026. 6. 10. 23시 7분 2초","rows":[{"date":"2026-06-10","customer":"억까","player":"mike","startTime":"01:00","endTime":"05:00","hours":"4h","endDate":"2026-06-10","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-11","customer":"억까","player":"mike","startTime":"00:00","endTime":"10:00","hours":"10h","endDate":"2026-06-11","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-11","customer":"해솔","player":"drey","startTime":"00:00","endTime":"10:00","hours":"10h","endDate":"2026-06-11","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-11","customer":"세인트","player":"jr","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-06-11","huntingGround":"용던 3","status":"예정"},{"date":"2026-06-11","customer":"장땡","player":"alan","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-06-11","huntingGround":"글루디오 5,6","status":"예정"}]};
+let PUBLIC_DATA = {"generatedAt":"2026. 6. 10. 23시 7분 2초","rows":[{"date":"2026-06-10","customer":"억까","player":"mike","startTime":"01:00","endTime":"05:00","hours":"4h","endDate":"2026-06-10","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-11","customer":"억까","player":"mike","startTime":"00:00","endTime":"10:00","hours":"10h","endDate":"2026-06-11","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-11","customer":"해솔","player":"drey","startTime":"00:00","endTime":"10:00","hours":"10h","endDate":"2026-06-11","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-11","customer":"세인트","player":"jr","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-06-11","huntingGround":"용던 3","status":"예정"},{"date":"2026-06-11","customer":"장땡","player":"alan","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-06-11","huntingGround":"글루디오 5,6","status":"예정"}]};
 const pad = n => String(n).padStart(2,"0");
 const dateISO = d => d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate());
 const addDays = (date, days) => { const [y,m,d] = date.split("-").map(Number); const x = new Date(y,m-1,d); x.setDate(x.getDate()+days); return dateISO(x); };
@@ -40,11 +43,15 @@ const esc = v => String(v ?? "").replace(/[&<>"']/g, ch => ({ "&":"&amp;","<":"&
 const isNight = r => r.endDate !== r.date || r.endTime <= r.startTime;
 const timeText = r => isNight(r) ? r.startTime + "~익일 " + r.endTime : r.startTime + "~" + r.endTime;
 const startDateTime = r => toDate(r.date, r.startTime);
-document.getElementById("generatedAt").textContent = PUBLIC_DATA.generatedAt;
 function sortedRows(){ return PUBLIC_DATA.rows.slice().sort((a,b) => startDateTime(a)-startDateTime(b) || a.customer.localeCompare(b.customer)); }
 function scheduleTable(title, rows){ return '<div class="tablebox"><div class="summary"><span>'+esc(title)+'</span><b>'+rows.length+'개</b></div>'+(rows.length?'<table><thead><tr><th>NO</th><th>고객 ID</th><th>플레이어</th><th>시간</th><th>사냥터</th></tr></thead><tbody>'+rows.map((r,i)=>'<tr><td>'+pad(i+1)+'</td><td><b>'+esc(r.customer)+'</b></td><td><b>'+esc(r.player)+'</b></td><td class="time">'+esc(timeText(r))+'</td><td>'+esc(r.huntingGround)+'</td></tr>').join("")+'</tbody></table>':'<div class="empty">표시할 스케줄이 없습니다.</div>')+'</div>'; }
-function render(){ const today=dateISO(new Date()); const tomorrow=addDays(today,1); const rows=sortedRows(); document.getElementById("tables").innerHTML = scheduleTable("오늘 스케줄 - "+today, rows.filter(r=>r.date===today)) + scheduleTable("내일 스케줄 - "+tomorrow, rows.filter(r=>r.date===tomorrow)); }
+function render(){ const today=dateISO(new Date()); const tomorrow=addDays(today,1); const rows=sortedRows(); document.getElementById("generatedAt").textContent = PUBLIC_DATA.generatedAt; document.getElementById("tables").innerHTML = scheduleTable("오늘 스케줄 - "+today, rows.filter(r=>r.date===today)) + scheduleTable("내일 스케줄 - "+tomorrow, rows.filter(r=>r.date===tomorrow)); }
+function extractPublicData(html){ const m = String(html || "").match(/let PUBLIC_DATA = ([\s\S]*?);\s*const pad|const PUBLIC_DATA = ([\s\S]*?);\s*const pad/); if(!m) return null; return JSON.parse(m[1] || m[2]); }
+async function refreshPublicData(){ try { const res = await fetch(location.pathname + "?refresh=" + Date.now(), { cache: "no-store" }); if(!res.ok) return; const next = extractPublicData(await res.text()); if(next && Array.isArray(next.rows) && next.generatedAt !== PUBLIC_DATA.generatedAt){ PUBLIC_DATA = next; render(); } } catch(_) {} }
 render();
+setTimeout(refreshPublicData, 3000);
+setInterval(refreshPublicData, 30000);
 </script>
 </body>
 </html>; PSPath=C:\Users\kij12\Downloads\ClassicOps_REMIT_28_FIX_VERIFIED_20260531\PUBLIC\schedule.html; PSParentPath=C:\Users\kij12\Downloads\ClassicOps_REMIT_28_FIX_VERIFIED_20260531\PUBLIC; PSChildName=schedule.html; PSDrive=; PSProvider=; ReadCount=1}
+; PSPath=C:\Users\kij12\Downloads\ClassicOps_REMIT_28_FIX_VERIFIED_20260531\PUBLIC\schedule.html; PSParentPath=C:\Users\kij12\Downloads\ClassicOps_REMIT_28_FIX_VERIFIED_20260531\PUBLIC; PSChildName=schedule.html; PSDrive=; PSProvider=; ReadCount=1}
