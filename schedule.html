@@ -1,6 +1,40 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>ClassicOps 공개 스케줄</title><style>body{margin:0;background:#eef2f7;color:#111827;font-family:Arial,"Malgun Gothic",sans-serif}.wrap{max-width:1040px;margin:0 auto;padding:14px}header{background:#111827;color:#fff;padding:22px;border-radius:8px 8px 0 0}h1{margin:0;font-size:28px}.meta{margin-top:8px;color:#cbd5e1;font-size:13px;line-height:1.5}.tablebox{background:#fff7ec;border:1px solid #d9e2ef;border-radius:0 0 8px 8px;margin-bottom:18px;padding:16px}.summary{display:flex;justify-content:space-between;align-items:center;margin:2px 0 10px;color:#486181}.summary b{font-size:20px;color:#000}table{width:100%;border-collapse:collapse;background:#fff}th,td{padding:11px 10px;border-bottom:1px solid #d8dee8;text-align:center}th{background:#dfe9d9;font-size:13px}td{font-size:14px}tbody tr:nth-child(even){background:#eaf3e7}tbody tr:nth-child(odd){background:#fffaf1}.time{font-weight:800}.empty{padding:18px;background:#fff;text-align:center;color:#64748b;border:1px solid #e5e7eb}</style></head><body><div class="wrap"><header><h1>ClassicOps 공개 스케줄</h1><div class="meta">마지막 생성: <span id="generatedAt"></span><br>날짜는 시작일 기준이며, 종료 시간이 더 이르면 익일 종료로 표시됩니다.</div></header><div id="tables"></div></div><script>
-let PUBLIC_DATA = {"rows":[{"date":"2026-06-12","customer":"해솔","player":"OWNER","startTime":"00:00","endTime":"01:00","hours":"1h","endDate":"2026-06-12","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-12","customer":"해솔","player":"mike","startTime":"01:00","endTime":"10:00","hours":"9h","endDate":"2026-06-12","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-12","customer":"세인트","player":"jr","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-06-12","huntingGround":"용던 3","status":"예정"},{"date":"2026-06-12","customer":"장땡","player":"alan","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-06-12","huntingGround":"용의계곡","status":"예정"}],"generatedAt":"2026. 6. 12. 1시 38분 15초"};
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>ClassicOps 공개 스케줄</title>
+<style>
+  body{margin:0;background:#eef2f7;color:#111827;font-family:Arial,"Malgun Gothic",sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:14px}
+  header{background:#111827;color:#fff;padding:22px;border-radius:8px 8px 0 0}
+  h1{margin:0;font-size:28px}
+  .meta{margin-top:8px;color:#cbd5e1;font-size:13px;line-height:1.5}
+  .tablebox{background:#f7f2ea;border:1px solid #d8dee8;border-top:0;padding:16px;overflow:auto}
+  .tablebox:last-child{border-radius:0 0 8px 8px}
+  .summary{display:flex;justify-content:space-between;gap:10px;align-items:end;margin-bottom:10px;font-size:14px;color:#64748b}
+  .summary b{color:#111827;font-size:18px}
+  table{width:100%;border-collapse:collapse;min-width:760px;background:#fff}
+  th,td{padding:11px 10px;border-bottom:1px solid #d8dee8;text-align:left;font-size:14px;vertical-align:top}
+  th{background:#dfe7da;font-size:13px}
+  tbody tr:nth-child(odd){background:#fffaf1}
+  tbody tr:nth-child(even){background:#e9f0e4}
+  .time{font-weight:900;white-space:nowrap}
+  .small{display:block;margin-top:3px;color:#64748b;font-size:12px;font-weight:700}
+  .empty{padding:34px;text-align:center;color:#64748b;background:#fff;border:1px dashed #d8dee8;border-radius:8px}
+  @media(max-width:720px){.wrap{padding:8px}h1{font-size:23px}table{min-width:0}thead{display:none}tr{display:grid;grid-template-columns:48px 1fr;border-bottom:1px solid #d8dee8;padding:8px}td{border:0;padding:5px 4px}td:first-child{grid-row:span 4;color:#64748b}td::before{display:block;color:#64748b;font-size:12px;font-weight:700}td:nth-child(2)::before{content:"고객"}td:nth-child(3)::before{content:"플레이어"}td:nth-child(4)::before{content:"시간"}td:nth-child(5)::before{content:"사냥터"}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><h1>ClassicOps 공개 스케줄</h1><div class="meta">마지막 생성: <span id="generatedAt"></span><br>날짜는 시작일 기준이며, 종료 시간이 더 이르면 익일 종료로 표시됩니다.</div></header>
+  <div id="tables"></div>
+</div>
+<script>
+let PUBLIC_DATA = {"generatedAt":"2026. 6. 12. 10시 24분 23초","rows":[{"date":"2026-06-12","customer":"해솔","player":"OWNER","startTime":"00:00","endTime":"01:00","hours":"1h","endDate":"2026-06-12","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-12","customer":"해솔","player":"mike","startTime":"01:00","endTime":"10:00","hours":"9h","endDate":"2026-06-12","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-12","customer":"세인트","player":"jr","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-06-12","huntingGround":"용던 3","status":"예정"},{"date":"2026-06-12","customer":"장땡","player":"alan","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-06-12","huntingGround":"용의계곡","status":"예정"}]};
 const pad = n => String(n).padStart(2,"0");
 const dateISO = d => d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate());
 const addDays = (date, days) => { const [y,m,d] = date.split("-").map(Number); const x = new Date(y,m-1,d); x.setDate(x.getDate()+days); return dateISO(x); };
@@ -12,6 +46,11 @@ const startDateTime = r => toDate(r.date, r.startTime);
 function sortedRows(){ return PUBLIC_DATA.rows.slice().sort((a,b) => startDateTime(a)-startDateTime(b) || a.customer.localeCompare(b.customer)); }
 function scheduleTable(title, rows){ return '<div class="tablebox"><div class="summary"><span>'+esc(title)+'</span><b>'+rows.length+'개</b></div>'+(rows.length?'<table><thead><tr><th>NO</th><th>고객 ID</th><th>플레이어</th><th>시간</th><th>사냥터</th></tr></thead><tbody>'+rows.map((r,i)=>'<tr><td>'+pad(i+1)+'</td><td><b>'+esc(r.customer)+'</b></td><td><b>'+esc(r.player)+'</b></td><td class="time">'+esc(timeText(r))+'</td><td>'+esc(r.huntingGround)+'</td></tr>').join("")+'</tbody></table>':'<div class="empty">표시할 스케줄이 없습니다.</div>')+'</div>'; }
 function render(){ const today=dateISO(new Date()); const tomorrow=addDays(today,1); const rows=sortedRows(); document.getElementById("generatedAt").textContent = PUBLIC_DATA.generatedAt; document.getElementById("tables").innerHTML = scheduleTable("오늘 스케줄 - "+today, rows.filter(r=>r.date===today)) + scheduleTable("내일 스케줄 - "+tomorrow, rows.filter(r=>r.date===tomorrow)); }
-function extractPublicData(html){ const m = String(html || "").match(/(?:let|const) PUBLIC_DATA = ([\s\S]*?);\s*const pad/); if(!m) return null; return JSON.parse(m[1]); }
-async function refreshPublicData(){ try { const api = "https://api.github.com/repos/casa230800-wq/casa/contents/schedule.html?ref=main&refresh=" + Date.now(); const res = await fetch(api, { cache: "no-store", headers: { "Accept": "application/vnd.github+json" } }); if(!res.ok) return; const meta = await res.json(); const binary = atob(String(meta.content || "").replace(/\s/g, "")); const bytes = Uint8Array.from(binary, ch => ch.charCodeAt(0)); const html = new TextDecoder("utf-8").decode(bytes); const next = extractPublicData(html); if(next && Array.isArray(next.rows) && next.generatedAt !== PUBLIC_DATA.generatedAt){ PUBLIC_DATA = next; render(); } } catch(_) {} }
-render();setTimeout(refreshPublicData,3000);setInterval(refreshPublicData,30000);</script></body></html>
+function extractPublicData(html){ const m = String(html || "").match(/const PUBLIC_DATA = ([sS]*?);s*const pad/); if(!m) return null; return JSON.parse(m[1]); }
+async function refreshPublicData(){ try { const api = "https://api.github.com/repos/casa230800-wq/casa/contents/schedule.html?ref=main&refresh=" + Date.now(); const res = await fetch(api, { cache: "no-store", headers: { "Accept": "application/vnd.github+json" } }); if(!res.ok) return; const meta = await res.json(); const binary = atob(String(meta.content || "").replace(/s/g, "")); const bytes = Uint8Array.from(binary, ch => ch.charCodeAt(0)); const html = new TextDecoder("utf-8").decode(bytes); const next = extractPublicData(html); if(next && Array.isArray(next.rows) && next.generatedAt !== PUBLIC_DATA.generatedAt){ PUBLIC_DATA = next; render(); } } catch(_) {} }
+render();
+setTimeout(refreshPublicData, 3000);
+setInterval(refreshPublicData, 30000);
+</script>
+</body>
+</html>
