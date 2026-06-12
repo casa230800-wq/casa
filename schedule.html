@@ -34,7 +34,7 @@
   <div id="tables"></div>
 </div>
 <script>
-let PUBLIC_DATA = {"generatedAt":"2026. 6. 12. 11시 58분 17초","rows":[{"date":"2026-06-12","customer":"해솔","player":"OWNER","startTime":"00:00","endTime":"01:00","hours":"1h","endDate":"2026-06-12","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-12","customer":"세인트","player":"jr","startTime":"03:00","endTime":"12:00","hours":"9h","endDate":"2026-06-12","huntingGround":"용던 3","status":"예정"},{"date":"2026-06-12","customer":"장땡","player":"alan","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-06-12","huntingGround":"용의계곡","status":"예정"}]};
+let PUBLIC_DATA = {"generatedAt":"2026. 6. 12. 11시 58분 30초","rows":[{"date":"2026-06-12","customer":"해솔","player":"OWNER","startTime":"00:00","endTime":"01:00","hours":"1h","endDate":"2026-06-12","huntingGround":"에바왕국","status":"예정"},{"date":"2026-06-12","customer":"세인트","player":"jr","startTime":"03:00","endTime":"12:00","hours":"9h","endDate":"2026-06-12","huntingGround":"용던 3","status":"예정"},{"date":"2026-06-12","customer":"장땡","player":"alan","startTime":"03:00","endTime":"09:00","hours":"6h","endDate":"2026-06-12","huntingGround":"용의계곡","status":"예정"},{"date":"2026-06-12","customer":"장땡","player":"alan","startTime":"12:00","endTime":"15:00","hours":"3h","endDate":"2026-06-12","huntingGround":"용의계곡","status":"예정"}]};
 const pad = n => String(n).padStart(2,"0");
 const dateISO = d => d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate());
 const addDays = (date, days) => { const [y,m,d] = date.split("-").map(Number); const x = new Date(y,m-1,d); x.setDate(x.getDate()+days); return dateISO(x); };
