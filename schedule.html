@@ -34,7 +34,7 @@
   <div id="tables"></div>
 </div>
 <script>
-let PUBLIC_DATA = {"generatedAt":"2026. 7. 4. 2시 33분 18초","rows":[{"date":"2026-07-04","customer":"세인트","player":"alan","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-07-04","huntingGround":"엘모어","status":"예정"},{"date":"2026-07-04","customer":"장땡","player":"mike","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-07-04","huntingGround":"타락","status":"예정"},{"date":"2026-07-04","customer":"제이","player":"Alvin","startTime":"22:00","endTime":"10:00","hours":"12h","endDate":"2026-07-05","huntingGround":"글루디오 5,6","status":"예정"}]};
+let PUBLIC_DATA = {"generatedAt":"2026. 7. 4. 2시 33분 43초","rows":[{"date":"2026-07-04","customer":"세인트","player":"alan","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-07-04","huntingGround":"엘모어","status":"예정"},{"date":"2026-07-04","customer":"장땡","player":"chard","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-07-04","huntingGround":"엘모어","status":"예정"},{"date":"2026-07-04","customer":"제이","player":"Alvin","startTime":"22:00","endTime":"10:00","hours":"12h","endDate":"2026-07-05","huntingGround":"글루디오 5,6","status":"예정"}]};
 const pad = n => String(n).padStart(2,"0");
 const dateISO = d => d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate());
 const addDays = (date, days) => { const [y,m,d] = date.split("-").map(Number); const x = new Date(y,m-1,d); x.setDate(x.getDate()+days); return dateISO(x); };
