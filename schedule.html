@@ -34,7 +34,7 @@
   <div id="tables"></div>
 </div>
 <script>
-let PUBLIC_DATA = {"generatedAt":"2026. 7. 7. 15시 52분 50초","rows":[{"date":"2026-07-07","customer":"세인트","player":"OWNER","startTime":"03:00","endTime":"15:00","hours":"12h","endDate":"2026-07-07","huntingGround":"엘모어","status":"예정"}]};
+let PUBLIC_DATA = {"generatedAt":"2026. 7. 9. 4시 44분 1초","rows":[{"date":"2026-07-09","customer":"장땡","player":"Huy","startTime":"03:00","endTime":"12:00","hours":"9h","endDate":"2026-07-09","huntingGround":"타락","status":"예정"}]};
 const pad = n => String(n).padStart(2,"0");
 const dateISO = d => d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate());
 const addDays = (date, days) => { const [y,m,d] = date.split("-").map(Number); const x = new Date(y,m-1,d); x.setDate(x.getDate()+days); return dateISO(x); };
